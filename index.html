@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+            </style>
+    <title>Shopping Cart</title>
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #3BB77E;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .search-bar-container {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            margin: 0 20px;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            flex: 1;
+        }
+
+        .search-bar select,
+        .search-bar input {
+            height: 30px;
+            border: none;
+            padding: 0 10px;
+        }
+
+        .search-bar select {
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            margin-right: -1px;
+            /* Slight overlap to connect input and select */
+        }
+
+        .search-bar input {
+            flex: 1;
+            border-radius: 5px;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        .search-icon img {
+            height: 25px;
+            cursor: pointer;
+        }
+
+        .icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .icons img {
+            height: 25px;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        .profile-icon img {
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .feature-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .feature {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            max-width: 300px;
+            text-align: left;
+        }
+
+        .feature img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .feature h3 {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+
+        footer {
+            background-color: #ffffff;
+            padding: 40px 20px;
+            border-top: 1px solid #ccc;
+            font-family: Arial, sans-serif;
+            color: #000;
+            margin-top: auto;
+        }
+
+        .footer-top {
+            background: rgba(255, 255, 255, 1);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 20px;
+            padding-bottom: 20px;
+        }
+
+        .footer-top div {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-top h4 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .footer-top ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .footer-top li {
+            margin-bottom: 10px;
+            font-size: 0.9em;
+        }
+
+        .footer-top a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        .footer-top a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 20px;
+            border-top: 1px solid #ccc;
+            font-size: 0.8em;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+        }
+
+        .twittericon {
+            color: #3BB77E;
+            font-size: 20px;
+            ;
+        }
+
+
+
+        /* Responsive Styles */
+        @media (max-width: 497px) {
+            .search-bar-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .search-bar input {
+                margin-top: 10px;
+                margin-right: 0;
+            }
+
+            .footer-top {
+                flex-direction: column;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+
+
+        .main-contenthp {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .rect-imageshp {
+            display: flex;
+            flex-direction: row;
+            margin-top: 40px;
+        }
+
+        .rec-img-1hp {
+            width: 50%;
+            padding: 20px;
+        }
+
+        .containerhp {
+            display: flex;
+            flex-direction: row;
+            max-width: 1500px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            /* background-image: url('images/newsletter\ background.png'); */
+            background-size: cover;
+            background-position: center;
+            padding: 100px;
+            color: black;
+            text-align: center;
+            border-radius: 50px;
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .image-sectionhp {
+            flex: 1;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .app-screenshotshp {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-sectionhp {
+            flex: 1;
+            width: 700px;
+            /* background-color: aqua; */
+            padding: 80px;
+            
+           
+
+
+        }
+
+        .text-sectionhp h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            
+
+            
+            
+        }
+
+        .text-sectionhp p {
+            /* margin-bottom: 20px; */
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .text-sectionhp .inner-text {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .buttonshp {
+            display: flex;
+            gap: 10px;
+
+        }
+
+        .btnhp {
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .app-storehp {
+            background-color: #000;
+        }
+
+        .google-playhp {
+            background-color: #3ddc84;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .containerhp {
+                flex-direction: column;
+            }
+
+            .text-sectionhp {
+                padding: 20px;
+            }
+
+            .text-sectionhp h1 {
+                font-size: 20px;
+            }
+
+            .app-screenshotshp {
+                max-width: 80%;
+            }
+        }
+
+
+
+
+
+
+
+        @media (max-width: 480px) {
+            .header {
+                flex-direction: column;
+            }
+
+            .icons {
+                margin-top: 10px;
+            }
+
+            .subscription {
+                flex-direction: column;
+                padding: 20px;
+                border-radius: 0;
+            }
+
+            .subscription h2 {
+                margin-bottom: 20px;
+            }
+
+            .feature-container {
+                flex-direction: column;
+            }
+
+            .feature {
+                margin-bottom: 20px;
+            }
+
+            .social-links {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+            }
+
+            .social-links1 a {
+                display: inline-block;
+                margin-left: 10px;
+                color: #3BB77E;
+                text-decoration: none;
+                font-size: 70px;
+            }
+
+            .social-links a:hover {
+                color: #2F9D68;
+            }
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="photos/logo.png" alt="Logo">
+            <span>Drop It</span>
+
+        </div>
+        <div class="search-bar-container">
+            <div class="search-bar">
+                <select>
+                    <option>All Categories</option>
+                    <option>Vegetables</option>
+                    <option>Fruits</option>
+                    <option>Dairy</option>
+                </select>
+                <input type="text" placeholder="Search for products...">
+            </div>
+            <div class="search-icon">
+                <img src="photos/Search-btn.png" alt="Search">
+            </div>
+        </div>
+
+
+        <div class="icons">
+            <img src="photos/Cart-1.png" alt="Cart">
+            <div class="profile-icon">
+                <img src="photos/logo.png" alt="Profile">
+            </div>
+        </div>
+    </div>
+    <div class="main-contenthp">
+
+
+        <div class="rect-imageshp">
+            <img src="photos/Rectangle.png" alt="" class="rec-img-1hp">
+            <img src="photos/Rectangle.png" alt="" class="rec-img-1hp">
+        </div>
+        <div class="containerhp" style="background-image: url(photos/support\ bg.png); ">
+            <div class="image-sectionhp">
+                <img src="photos/image.png" alt="App Screenshotshp" class="app-screenshotshp">
+            </div>
+            <div class="text-sectionhp">
+                <h1>Connecting our user with iOS &</h1>
+                <h1> Android apps.Download from </h1>
+                <h1> App Store & Play store </h1>
+                <div class="inner-texthp">
+                    <p>Lorem ipsum dolor sit amet consectetur. Sit in sed sed rutrum </p>
+                    <p>ultrices egestas. Neque leo praesent odio diam. Vel amet vitae</p>
+                    <p>pulvinar cursus enim sagittis enim. Cum arcu vitae non scelerisque cursus eget mi.</p>
+                </div>
+                <div class="buttonshp">
+                    <a href="#" class="btnhp app-storehp">Download on the <br>
+                        <h1>App Store</h1>
+                    </a>
+                    <a href="#" class="btnhp google-playhp">Download on the<br>
+                        <h1>Google Play</h1>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="feature-container">
+        <div class="feature">
+            <img src="photos/best prices.png" alt="Deals">
+            <div>
+                <h3>Best Prices & Deals</h3>
+                <p>Don't miss our daily amazing deals and prices</p>
+            </div>
+        </div>
+        <div class="feature">
+            <img src="photos/Refundable.png" alt="Refund">
+            <div>
+                <h3>Refundable</h3>
+                <p>If your items have damage we agree to refund it</p>
+            </div>
+        </div>
+        <div class="feature">
+            <img src="photos/Free delivery.png" alt="Free Delivery">
+            <div>
+                <h3>Free Delivery</h3>
+                <p>Do purchase over ₹50 and get free delivery anywhere</p>
+            </div>
+        </div>
+    </div>
+    </div>
+    <footer>
+        <div class="footer-top">
+            <div>
+                <h4>Drop It</h4>
+                <img src="images/logo.png" alt="Logo" style="width: 30px; height:30px;">
+
+                <ul>
+                    <li><a href="#">Company Information</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Store Locations</a></li>
+                    <li><a href="#">Affiliate Program</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Customer Service</h4>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Order Tracking</a></li>
+                    <li><a href="#">Returns & Exchanges</a></li>
+                    <li><a href="#">Shipping & Delivery</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">New Arrivals</a></li>
+                    <li><a href="#">Best Sellers</a></li>
+                    <li><a href="#">Special Offers</a></li>
+                    <li><a href="#">Gift Cards</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Help Center</h4>
+                <ul>
+                    <li><a href="#">Payments</a></li>
+                    <li><a href="#">Refund</a></li>
+                    <li><a href="#">Checkout</a></li>
+                    <li><a href="#">Q&A</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div style="display: flex; align-items: center;">
+                <p>&copy; 2024 Grocery Mart. All rights reserved. | <a href="#">Privacy Policy</a></p>
+
+            </div>
+            <div class="social-links1">
+                <a href="#" class="twittericon"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="twittericon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="twittericon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="twittericon"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
